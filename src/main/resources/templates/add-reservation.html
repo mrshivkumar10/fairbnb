@@ -17,6 +17,7 @@
 					th:text="${customer.customerDetail.firstName} + ' ' + ${customer.customerDetail.lastName} ">
 					</option>
 			</select>
+
 			
 			<span th:if="${#fields.hasErrors('customerReservation.customerId')}" 
 			th:errors="*{customerReservation.customerId}"></span> 

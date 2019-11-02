@@ -57,6 +57,8 @@ private final CustomerService customerService;
 	@GetMapping("/editreservation/{id}")
 	public String reservationUpdateForm(@PathVariable("id") int reservationId, Model model) {
 		Reservation reservation = reservationService.getReservationById(reservationId);
+		Iterable<Customer> customers = customerService.getAllCustomers();
+		model.addAttribute("customersAttr", customers);
 		model.addAttribute("reservationAttr", reservation);
 		return "update-reservation";
 

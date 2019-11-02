@@ -10,7 +10,12 @@
 		<form action="#" th:action="@{/updatereservation/{id}(id=${reservationAttr.reservationId})}" th:object="${reservationAttr}" method="post">
 				
 			<label for="customerReservation.customerId">Customer ID</label> 
-			<input type="text" th:field="*{customerReservation.customerId}" id="customerReservation.customerId" placeholder="Customer ID">
+			<select th:field="*{customerReservation.customerId}" id="customerReservation.customerId">
+				<option th:each="customer : ${customersAttr}"
+					th:value="${customer.customerId}"
+					th:text="${customer.customerDetail.firstName} + ' ' + ${customer.customerDetail.lastName} ">
+				</option>
+			</select>
 			<span th:if="${#fields.hasErrors('customerReservation.customerId')}" th:errors="*{customerReservation.customerId}"></span> 
 			
 			<label for="reservationProperty.propertyId">Property ID</label> 
