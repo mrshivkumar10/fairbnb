@@ -13,21 +13,21 @@
 			<input type="text" th:field="*{propertyId}" id="propertyId" placeholder="Property ID">
 			<span th:if="${#fields.hasErrors('propertyId')}" th:errors="*{propertyId}"></span> 
 			
-			<label for="hostId">Host ID</label> 
-			<input type="text" th:field="*{hostId}" id="hostId" placeholder="Host ID">
-			<span th:if="${#fields.hasErrors('hostId')}" th:errors="*{hostId}"></span> 
+			<label for="propertyHost.hostId">Host ID</label> 
+			<input type="text" th:field="*{propertyHost.hostId}" id="propertyHost.hostId" placeholder="Host ID">
+			<span th:if="${#fields.hasErrors('propertyHost.hostId')}" th:errors="*{propertyHost.hostId}"></span> 
 			
-			<label for="locationId">Location ID</label> 
-			<input type="text" th:field="*{locationId}" id="locationId" placeholder="Location ID">
-			<span th:if="${#fields.hasErrors('locationId')}" th:errors="*{locationId}"></span> 
+			<label for="propertyLocation.locationId">Location ID</label> 
+			<input type="text" th:field="*{propertyLocation.locationId}" id="propertyLocation.locationId" placeholder="Location ID">
+			<span th:if="${#fields.hasErrors('propertyLocation.locationId')}" th:errors="*{propertyLocation.locationId}"></span> 
 			
-			<label for="propertyTypeId">Property Type ID</label> 
-			<input type="text" th:field="*{propertyTypeId}" id="propertyTypeId" placeholder="Property Type ID">
-			<span th:if="${#fields.hasErrors('propertyTypeId')}" th:errors="*{propertyTypeId}"></span>  
+			<label for="propertyType.propertyTypeId">Property Type ID</label> 
+			<input type="text" th:field="*{propertyType.propertyTypeId}" id="propertyType.propertyTypeId" placeholder="Property Type ID">
+			<span th:if="${#fields.hasErrors('propertyType.propertyTypeId')}" th:errors="*{propertyType.propertyTypeId}"></span>  
 			
-			<label for="nightyRate">Nightly Rate</label> 
-			<input type="text" th:field="*{nightyRate}" id="nightyRate" placeholder="Nightly Rate £">
-			<span th:if="${#fields.hasErrors('nightyRate')}" th:errors="*{nightyRate}"></span> 
+			<label for="nightlyRate">Nightly Rate</label> 
+			<input type="text" th:field="*{nightlyRate}" id="nightlyRate" placeholder="Nightly Rate £">
+			<span th:if="${#fields.hasErrors('nightlyRate')}" th:errors="*{nightlyRate}"></span> 
 			
 			<input type="submit" value="Update Property Details">
 		</form>

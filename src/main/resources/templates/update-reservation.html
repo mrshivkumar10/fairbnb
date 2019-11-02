@@ -19,6 +19,12 @@
 			<span th:if="${#fields.hasErrors('customerReservation.customerId')}" th:errors="*{customerReservation.customerId}"></span> 
 			
 			<label for="reservationProperty.propertyId">Property ID</label> 
+			<select th:field="*{reservationProperty.propertyId}" id="reservationProperty.propertyId">
+				<option th:each="property : ${propertiesAttr}"
+					th:value="${property.propertyId}"
+					th:text="${property.propertyId}">
+				</option>
+			</select>
 			<input type="text" th:field="*{reservationProperty.propertyId}" id="reservationProperty.propertyId" placeholder="Property ID">
 			<span th:if="${#fields.hasErrors('reservationProperty.propertyId')}" th:errors="*{reservationProperty.propertyId}"></span> 
 			

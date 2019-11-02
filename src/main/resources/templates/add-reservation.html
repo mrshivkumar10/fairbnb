@@ -25,7 +25,7 @@
 			<label for="reservationProperty.propertyId">Property ID</label> 
 			<input type="text" th:field="*{reservationProperty.propertyId}" id="reservationProperty.propertyId" placeholder="Property ID">
 			<span th:if="${#fields.hasErrors('reservationProperty.propertyId')}" th:errors="*{reservationProperty.propertyId}"></span> 
-			
+
 			<label for="checkInDate">Check-In Date</label> 
 			<input type="text" th:field="*{checkInDate}" id="checkInDate" placeholder="Check-In Date">
 			<span th:if="${#fields.hasErrors('checkInDate')}" th:errors="*{checkInDate}"></span> 

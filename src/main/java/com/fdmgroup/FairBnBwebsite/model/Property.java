@@ -31,7 +31,7 @@ public class Property {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "location_id") //locationId
-	private Property propertyLocation;	
+	private Location propertyLocation;	
 	
 
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -44,6 +44,19 @@ public class Property {
 	//default constructor
 	public Property(){}
 	
+	public Property(int propertyId, List<Reservation> reservation, Host propertyHost, Location propertyLocation,
+			PropertyType propertyType, int nightlyRate) {
+		super();
+		this.propertyId = propertyId;
+		this.reservation = reservation;
+		this.propertyHost = propertyHost;
+		this.propertyLocation = propertyLocation;
+		this.propertyType = propertyType;
+		this.nightlyRate = nightlyRate;
+	}
+
+
+
 	public int getPropertyId() {
 		return propertyId;
 	}
@@ -68,6 +81,7 @@ public class Property {
 		this.propertyType = propertyType;
 	}
 
+	
 	public int getNightlyRate() {
 		return nightlyRate;
 	}
@@ -84,12 +98,14 @@ public class Property {
 		this.reservation = reservation;
 	}
 
-	public Property getPropertyLocation() {
+	public Location getPropertyLocation() {
 		return propertyLocation;
 	}
 
-	public void setPropertyLocation(Property propertyLocation) {
+	public void setPropertyLocation(Location propertyLocation) {
 		this.propertyLocation = propertyLocation;
 	}
+
+
 	
 }

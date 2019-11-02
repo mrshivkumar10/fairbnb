@@ -15,6 +15,7 @@ import com.fdmgroup.FairBnBwebsite.model.Customer;
 import com.fdmgroup.FairBnBwebsite.model.Reservation;
 import com.fdmgroup.FairBnBwebsite.service.ContactDetailService;
 import com.fdmgroup.FairBnBwebsite.service.CustomerService;
+import com.fdmgroup.FairBnBwebsite.service.PropertyService;
 import com.fdmgroup.FairBnBwebsite.service.ReservationService;
 
 @Controller
@@ -22,11 +23,14 @@ public class ReservationController {
 	
 private final ReservationService reservationService;
 private final CustomerService customerService;
+private final PropertyService propertyService;
 	
 	@Autowired
-	public ReservationController(ReservationService reservationService, CustomerService customerService) {
+	public ReservationController(ReservationService reservationService, CustomerService customerService, 
+			PropertyService propertyService) {
 		this.reservationService = reservationService;
 		this.customerService = customerService;
+		this.propertyService = propertyService;
 	}
 	
 	@GetMapping("/reservationindex")
@@ -40,6 +44,7 @@ private final CustomerService customerService;
 		Iterable<Customer> customers = customerService.getAllCustomers();
 		model.addAttribute("customersAttr", customers);
 		model.addAttribute("reservationAttr", reservationService.createReservation());
+		model.addAttribute("propertiesAttr", propertyService.getAllPropertys());
 		return "add-reservation";
 	}
 	
@@ -48,8 +53,8 @@ private final CustomerService customerService;
 		if (result.hasErrors()) {
 			return "add-reservation";
 		}
-		
 		reservationService.saveReservation(reservationAttr);
+		
 		model.addAttribute("reservationAttr", reservationService.getAllReservations());
 		return "index-reservations";
 	}
@@ -60,6 +65,7 @@ private final CustomerService customerService;
 		Iterable<Customer> customers = customerService.getAllCustomers();
 		model.addAttribute("customersAttr", customers);
 		model.addAttribute("reservationAttr", reservation);
+		model.addAttribute("propertiesAttr", propertyService.getAllPropertys());
 		return "update-reservation";
 
 	}
