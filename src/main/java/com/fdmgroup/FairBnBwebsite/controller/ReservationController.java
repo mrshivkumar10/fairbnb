@@ -10,17 +10,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.fdmgroup.FairBnBwebsite.model.ContactDetail;
+import com.fdmgroup.FairBnBwebsite.model.Customer;
 import com.fdmgroup.FairBnBwebsite.model.Reservation;
+import com.fdmgroup.FairBnBwebsite.service.ContactDetailService;
+import com.fdmgroup.FairBnBwebsite.service.CustomerService;
 import com.fdmgroup.FairBnBwebsite.service.ReservationService;
 
 @Controller
 public class ReservationController {
 	
 private final ReservationService reservationService;
+private final CustomerService customerService;
 	
 	@Autowired
-	public ReservationController(ReservationService reservationService) {
+	public ReservationController(ReservationService reservationService, CustomerService customerService) {
 		this.reservationService = reservationService;
+		this.customerService = customerService;
 	}
 	
 	@GetMapping("/reservationindex")
@@ -31,6 +37,8 @@ private final ReservationService reservationService;
 	
 	@GetMapping("/reservationsignup")
 	public String reservationSignupForm(Model model) {
+		Iterable<Customer> customers = customerService.getAllCustomers();
+		model.addAttribute("customersAttr", customers);
 		model.addAttribute("reservationAttr", reservationService.createReservation());
 		return "add-reservation";
 	}
