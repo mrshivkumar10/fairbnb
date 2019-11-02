@@ -17,20 +17,17 @@ import javax.persistence.Table;
 @Table(name="reservations")
 public class Reservation {
 	
-//	@OneToMany(mappedBy="gameGenre")
-//	private List <Videogame> videogames;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "reservation_id", unique = true, nullable = false)
 	private int reservationId;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "property_id")
+	@JoinColumn(name = "property_id") //propertyId
 	private Property reservationProperty;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "customer_id")
+	@JoinColumn(name = "customer_id") //customerId
 	private Customer customerReservation;
 	
 	@Column(name="check_in_date")
@@ -43,6 +40,20 @@ public class Reservation {
 	public Reservation() {
 	}
 	
+	
+
+	public Reservation(int reservationId, Property reservationProperty, Customer customerReservation,
+			LocalDate checkInDate, LocalDate checkOutDate) {
+		super();
+		this.reservationId = reservationId;
+		this.reservationProperty = reservationProperty;
+		this.customerReservation = customerReservation;
+		this.checkInDate = checkInDate;
+		this.checkOutDate = checkOutDate;
+	}
+
+
+
 	public int getReservationId() {
 		return reservationId;
 	}
@@ -51,7 +62,22 @@ public class Reservation {
 		this.reservationId = reservationId;
 	}
 
-	
+	public Property getReservationProperty() {
+		return reservationProperty;
+	}
+
+	public void setReservationProperty(Property reservationProperty) {
+		this.reservationProperty = reservationProperty;
+	}
+
+	public Customer getCustomerReservation() {
+		return customerReservation;
+	}
+
+	public void setCustomerReservation(Customer customerReservation) {
+		this.customerReservation = customerReservation;
+	}
+
 	public LocalDate getCheckInDate() {
 		return checkInDate;
 	}
@@ -67,21 +93,7 @@ public class Reservation {
 	public void setCheckOutDate(LocalDate checkOutDate) {
 		this.checkOutDate = checkOutDate;
 	}
-
-	public Customer getCustomerReservation() {
-		return customerReservation;
-	}
-
-	public void setCustomerReservation(Customer customerReservation) {
-		this.customerReservation = customerReservation;
-	}
-
-	public Property getReservationProperty() {
-		return reservationProperty;
-	}
-
-	public void setReservationProperty(Property reservationProperty) {
-		this.reservationProperty = reservationProperty;
-	}
+	
+	
 
 }

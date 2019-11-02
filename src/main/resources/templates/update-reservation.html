@@ -9,13 +9,13 @@
 <div>
 		<form action="#" th:action="@{/updatereservation/{id}(id=${reservationAttr.reservationId})}" th:object="${reservationAttr}" method="post">
 				
-			<label for="customerId">Customer ID</label> 
-			<input type="text" th:field="*{customerId}" id="customerId" placeholder="Customer ID">
-			<span th:if="${#fields.hasErrors('customerId')}" th:errors="*{customerId}"></span> 
+			<label for="customerReservation.customerId">Customer ID</label> 
+			<input type="text" th:field="*{customerReservation.customerId}" id="customerReservation.customerId" placeholder="Customer ID">
+			<span th:if="${#fields.hasErrors('customerReservation.customerId')}" th:errors="*{customerReservation.customerId}"></span> 
 			
-			<label for="propertyId">Property ID</label> 
-			<input type="text" th:field="*{propertyId}" id="propertyId" placeholder="Property ID">
-			<span th:if="${#fields.hasErrors('propertyId')}" th:errors="*{propertyId}"></span> 
+			<label for="reservationProperty.propertyId">Property ID</label> 
+			<input type="text" th:field="*{reservationProperty.propertyId}" id="reservationProperty.propertyId" placeholder="Property ID">
+			<span th:if="${#fields.hasErrors('reservationProperty.propertyId')}" th:errors="*{reservationProperty.propertyId}"></span> 
 			
 			<label for="checkInDate">CheckInDate</label> 
 			<input type="text" th:field="*{checkInDate}" id="checkInDate" placeholder="Check-In Date">
